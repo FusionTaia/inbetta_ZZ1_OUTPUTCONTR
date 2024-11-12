@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: br.com.inbetta.ztmoutputcontr
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: https://vhbtsde1ci.sap.inbetta.com:44300/
+        app:
+          name: ZZ1_OUTPUTCONTR
+          package: ZTM
+          transport: DE1K980686
+        exclude:
+          - /test/
